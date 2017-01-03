@@ -603,11 +603,11 @@ $st = "<b><font color = \"red\">پایان یافته</font></b>";
 }
 if($track['stauts'] != 0)
 {
-		$table->construct_cell("{$track['tid']}</td><td>{$profile_link}</td><td>{$track['payed']} تومان</td><td>{$packs[$pid]}</td><td>{$track['trackid']}</td><td>{$stdate}</td><td>{$expdate}</td><td>{$st}</td><td><a href=\"index.php?module=user-zarinpal&amp;action=end&amp;tid={$track['tid']}\">پایان دادن</a></td>");
+		$table->construct_cell("{$track['tid']}</td><td>{$profile_link}</td><td>{$track['payed']} تومان</td><td>{$packs[$pid]}</td><td>{$track['trackid']}</td><td>{$stdate}</td><td>{$expdate}</td><td>{$st}</td><td><a href=\"index.php?module=user-nextpaygate&amp;action=end&amp;tid={$track['tid']}\">پایان دادن</a></td>");
 				$table->construct_row();
 				}
 else{
-		$table->construct_cell("{$track['tid']}</td><td>{$profile_link}</td><td>{$track['payed']} تومان</td><td>{$packs[$pid]}</td><td>{$track['trackid']}</td><td>{$stdate}</td><td>{$expdate}</td><td>{$st}</td><td><a href=\"index.php?module=user-zarinpal&amp;action=deletetrac&amp;tid={$track['tid']}\">حذف</a></td>");
+		$table->construct_cell("{$track['tid']}</td><td>{$profile_link}</td><td>{$track['payed']} تومان</td><td>{$packs[$pid]}</td><td>{$track['trackid']}</td><td>{$stdate}</td><td>{$expdate}</td><td>{$st}</td><td><a href=\"index.php?module=user-nextpaygate&amp;action=deletetrac&amp;tid={$track['tid']}\">حذف</a></td>");
 				$table->construct_row();
 
 }				
@@ -736,7 +736,7 @@ $query = $db->simple_select("npgate_tractions", "*", "tid = $tid");
 
 
 					flash_message("عضویت مورد نظر با موفقیت پایان یافت.", 'success');
-					admin_redirect("index.php?module=user-zarinpal&action=tractions");
+					admin_redirect("index.php?module=user-nextpaygate&action=tractions");
 }
 // Delete Traction
 if($mybb->input['action'] == "deletetrac")
@@ -744,14 +744,14 @@ if($mybb->input['action'] == "deletetrac")
 $tid=intval($mybb->input['tid']);
 $db->query("DELETE FROM ".TABLE_PREFIX."npgate_tractions WHERE tid=$tid");
 					flash_message("تراکنش مورد نظر با موفقیت حذف شد.", 'success');
-					admin_redirect("index.php?module=user-zarinpal&action=tractions");
+					admin_redirect("index.php?module=user-nextpaygate&action=tractions");
 }
 // Delete Traction
 if($mybb->input['action'] == "deletealltrac")
 {
 $db->query("DELETE FROM ".TABLE_PREFIX."npgate_tractions WHERE stauts=0");
 					flash_message("تمامی تراکنش‌های پایان یافته با موفقیت حذف شدند.", 'success');
-					admin_redirect("index.php?module=user-zarinpal&action=tractions");
+					admin_redirect("index.php?module=user-nextpaygate&action=tractions");
 }
 if($mybb->input['action']=="manual_add")
 {
